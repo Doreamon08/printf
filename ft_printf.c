@@ -6,7 +6,7 @@
 /*   By: rabbie <rabbie@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 12:07:35 by rabbie            #+#    #+#             */
-/*   Updated: 2021/11/01 15:21:12 by rabbie           ###   ########.fr       */
+/*   Updated: 2021/11/01 16:03:29 by rabbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			*str++;
+			(void)*str++;
 			i += printer(str, ap);
 		}
 		else
@@ -95,7 +95,7 @@ int	ft_printf(const char *str, ...)
 			ft_putchar(*str);
 			i++;
 		}
-		*str++;
+		(void)*str++;
 	}
 	va_end(ap);
 	return (i);
@@ -112,7 +112,7 @@ int main()
 	 "begin", 6, 'c', 4294967295, 323947, p);
 	printf("------------------------\n");
 	pr = printf("%s - string\n%d - number(d)\n%c - char\n%u - unsigned int\n%x - HEX\n%%\n%p - ponter\n",
-	 "begin", 6, 'c', 4294967295, 323947, p);
+	 "begin", 6, 'c', 429496, 323947, p);
 	// ft_p = ft_printf("%u", 4294967295);
 	// pr = printf("%u", 4294967295);
 	printf("%d - ft_p, %d - pr\n", ft_p, pr);
