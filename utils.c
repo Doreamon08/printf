@@ -6,7 +6,7 @@
 /*   By: rabbie <rabbie@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 19:02:03 by rabbie            #+#    #+#             */
-/*   Updated: 2021/10/31 14:20:44 by rabbie           ###   ########.fr       */
+/*   Updated: 2021/11/01 15:23:48 by rabbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_putnbr(long num)
 	ft_putchar((num % 10) + '0');
 }
 
-int	to_heximal(int i, char x)
+int	to_heximal(unsigned long long i, char x)
 {
 	int	ost;
 	int	q;
@@ -63,7 +63,7 @@ int	to_heximal(int i, char x)
 		q = to_heximal(i / 16, x);
 	ost = i % 16;
 	i /= 16;
-	if (ost > 10)
+	if (ost >= 10)
 	{
 		if (x == 'X')
 			q += ft_putchar((ost - 10) + 'A');

@@ -6,7 +6,7 @@
 /*   By: rabbie <rabbie@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 12:07:35 by rabbie            #+#    #+#             */
-/*   Updated: 2021/11/01 14:31:22 by rabbie           ###   ########.fr       */
+/*   Updated: 2021/11/01 15:21:12 by rabbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ int	printer(const char *str, va_list ap)
 	if (*str == 'c')
 		i += ft_putchar((char)va_arg(ap, int));
 	if (*str == 'p')
-		i += ft_putstr(va_arg(ap, char *));
+	{
+		i += ft_putstr("0x");
+		i += to_heximal(va_arg(ap, unsigned long long), 'x');
+	}
 	if (*str == 'u')
 		i += fornumbers(ap, *str);
 	if (*str == 'X' || *str == 'x')
