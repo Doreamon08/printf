@@ -6,11 +6,11 @@
 /*   By: rabbie <rabbie@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 19:02:03 by rabbie            #+#    #+#             */
-/*   Updated: 2021/11/01 15:23:48 by rabbie           ###   ########.fr       */
+/*   Updated: 2021/11/05 15:09:11 by rabbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *c)
 {
@@ -34,7 +34,10 @@ int	ft_putstr(char *s)
 
 	i = 0;
 	if (!s)
-		return (0);
+	{
+		write (1, "(null)", 6);
+		return (6);
+	}
 	while (*s)
 		i += ft_putchar(*s++);
 	return (i);
@@ -59,7 +62,7 @@ int	to_heximal(unsigned long long i, char x)
 
 	ost = 0;
 	q = 0;
-	if (i > 16)
+	if (i >= 16)
 		q = to_heximal(i / 16, x);
 	ost = i % 16;
 	i /= 16;

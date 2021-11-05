@@ -6,11 +6,11 @@
 /*   By: rabbie <rabbie@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 12:07:35 by rabbie            #+#    #+#             */
-/*   Updated: 2021/11/01 16:03:29 by rabbie           ###   ########.fr       */
+/*   Updated: 2021/11/05 15:11:19 by rabbie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "ft_printf.h"
 
 int	fornumbers(va_list ap, char c)
 {
@@ -54,12 +54,16 @@ int	numlen(long l)
 int	printer(const char *str, va_list ap)
 {
 	int		i;
+	char	*s;
 
 	i = 0;
 	if (*str == '%')
 		i += ft_putchar('%');
 	if (*str == 's')
-		i += ft_putstr(va_arg(ap, char *));
+	{
+		s = va_arg(ap, char *);
+		i += ft_putstr(s);
+	}
 	if (*str == 'd' || *str == 'i')
 		i += fornumbers(ap, *str);
 	if (*str == 'c')
@@ -72,7 +76,7 @@ int	printer(const char *str, va_list ap)
 	if (*str == 'u')
 		i += fornumbers(ap, *str);
 	if (*str == 'X' || *str == 'x')
-		i += to_heximal(va_arg(ap, int), *str);
+		i += to_heximal(va_arg(ap, unsigned int), *str);
 	return (i);
 }
 
@@ -101,19 +105,20 @@ int	ft_printf(const char *str, ...)
 	return (i);
 }
 
-int main()
-{
-	int a = 12345;
-	int *p = &a;
-	int		ft_p;
-	int		pr;
+// int main()
+// {
+// 	int a = -2;
+// 	int *p = &a;
+// 	int		ft_p;
+// 	int		pr;
 
-	ft_p = ft_printf("%s - string\n%d - number(d)\n%c - char\n%u - unsigned int\n%x - HEX\n%%\n%p - ponter\n",
-	 "begin", 6, 'c', 4294967295, 323947, p);
-	printf("------------------------\n");
-	pr = printf("%s - string\n%d - number(d)\n%c - char\n%u - unsigned int\n%x - HEX\n%%\n%p - ponter\n",
-	 "begin", 6, 'c', 429496, 323947, p);
-	// ft_p = ft_printf("%u", 4294967295);
-	// pr = printf("%u", 4294967295);
-	printf("%d - ft_p, %d - pr\n", ft_p, pr);
-}
+// 	// ft_p = ft_printf("%s - string\n%d - number(d)\n%c - char\n%u - unsigned int\n%x - HEX\n%%\n%p - ponter\n",
+// 	//  "begin", 6, 'c', 4294967295, 323947, p);
+// 	// printf("------------------------\n");
+// 	// pr = printf("%s - string\n%d - number(d)\n%c - char\n%u - unsigned int\n%x - HEX\n%%\n%p - ponter\n",
+// 	//  "begin", 6, 'c', 429496, 323947, p);
+// 	ft_p = ft_printf(" %x ", a);
+// 	printf("\n------------------------\n");
+// 	pr = printf(" %x ", a);
+// 	printf("\n%d - ft_p, %d - pr\n", ft_p, pr);
+// }

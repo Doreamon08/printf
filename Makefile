@@ -6,7 +6,7 @@
 #    By: rabbie <rabbie@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/15 20:57:13 by rabbie            #+#    #+#              #
-#    Updated: 2021/11/01 16:04:04 by rabbie           ###   ########.fr        #
+#    Updated: 2021/11/05 13:39:03 by rabbie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ NAME = libftprintf.a
 SRCS = ft_printf.c\
        utils.c
 
-HEADER = header.h
+HEADER = ft_printf.h
 
 OBJ = $(SRCS:%.c=%.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror $(HEADER)
+CFLAGS = -Wall -Wextra -Werror -I $(HEADER)
 
 .PHONY : all clean fclean re bonus
 
